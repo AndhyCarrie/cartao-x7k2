@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#fff4f6">
+<title>Feliz 18 anos, Milena! 🌸</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Shippori+Mincho:wght@600;800&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff4f6; --bg-glow:#ffe1ea; --bg-glow2:#e4f3f2;
+  --chrome:#2b2233; --chrome-soft:#7a6680;
+  --btn:#2b2233; --btn-text:#fff8f2; --btn-ghost:rgba(43,34,51,.08);
+  --paper:#fff8f2; --ink:#2b2233; --sakura:#f4a7c1; --pink:#d9467e;
+  --teal:#2f7f86; --gold:#d4a24c; --indigo:#2c2c5a; --night:#1b1840;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#16132b; --bg-glow:#3a1f45; --bg-glow2:#163a40;
+    --chrome:#fbeef3; --chrome-soft:#c3b0cc;
+    --btn:#f4a7c1; --btn-text:#22182b; --btn-ghost:rgba(255,255,255,.1);
+    color-scheme:dark;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  background:
+    radial-gradient(120% 60% at 0% 0%, var(--bg-glow), transparent 60%),
+    radial-gradient(100% 50% at 100% 100%, var(--bg-glow2), transparent 60%),
+    var(--bg);
+  color:var(--chrome);
+  font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",-apple-system,system-ui,sans-serif;
+  overflow:hidden; overscroll-behavior:none;
+  -webkit-tap-highlight-color:transparent;
+}
+button{font:inherit;touch-action:manipulation;-webkit-user-select:none;user-select:none;cursor:pointer}
+button:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+
+/* ---------- Envelope intro ---------- */
+.intro{
+  position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:24px;
+  background:
+    radial-gradient(80% 50% at 50% 30%, var(--bg-glow), transparent 70%),
+    var(--bg);
+  transition:opacity .8s ease .5s, visibility 0s linear 1.3s;
+}
+.intro.open{opacity:0;visibility:hidden}
+.envelope{position:relative;width:min(330px,86vw);aspect-ratio:1.25;perspective:900px}
+.env-body{
+  position:absolute;inset:0;border-radius:14px;background:#f6dce4;
+  border:2.5px solid var(--ink);box-shadow:0 18px 40px rgba(60,20,50,.25);
+  overflow:hidden;
+}
+.env-body::before{ /* bottom fold */
+  content:"";position:absolute;inset:0;background:#f9e7ec;
+  clip-path:polygon(0 100%,50% 48%,100% 100%);
+}
+.env-body::after{
+  content:"";position:absolute;inset:0;background:#f3d0db;
+  clip-path:polygon(0 0,46% 55%,0 100%,100% 100%,54% 55%,100% 0,100% 100%,0 100%);opacity:.0;
+}
+.env-flap{
+  position:absolute;left:0;right:0;top:0;height:58%;z-index:3;transform-origin:top;
+  transition:transform .8s cubic-bezier(.5,.1,.3,1);
+}
+.env-flap::before{
+  content:"";position:absolute;inset:0;background:#efc3d1;
+  clip-path:polygon(0 0,100% 0,50% 100%);border-radius:14px 14px 0 0;
+}
+.intro.open .env-flap{transform:rotateX(180deg)}
+.env-card{
+  position:absolute;left:8%;right:8%;top:10%;bottom:8%;z-index:2;background:var(--paper);
+  border:2px solid var(--ink);border-radius:8px;padding:14px 16px;color:var(--ink);
+  display:flex;flex-direction:column;justify-content:flex-end;gap:2px;
+  transition:transform .9s cubic-bezier(.3,.1,.2,1) .35s;
+}
+.intro.open .env-card{transform:translateY(-55%)}
+.env-card .to{font-family:"Dancing Script",cursive;font-size:26px;color:var(--pink);line-height:1}
+.env-card .from{font-size:13px;color:#6b5872}
+.seal{
+  position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);z-index:4;
+  width:78px;height:78px;border-radius:50%;border:2.5px solid var(--ink);
+  background:radial-gradient(circle at 35% 30%,#ec6b98,#b8305f 70%);
+  display:grid;place-items:center;box-shadow:0 6px 16px rgba(120,20,60,.35);
+  transition:transform .4s ease, opacity .4s ease;
+}
+.seal svg{width:46px;height:46px}
+.intro.open .seal{transform:translate(-50%,-50%) scale(.4);opacity:0}
+.intro-hint{margin-top:28px;text-align:center;color:var(--chrome-soft);font-size:15px}
+.intro-hint b{display:block;font-family:"Shippori Mincho",serif;font-size:22px;color:var(--chrome);letter-spacing:.06em;margin-bottom:4px}
+@media (prefers-reduced-motion:no-preference){
+  .seal{animation:breathe 2.6s ease-in-out infinite}
+  @keyframes breathe{50%{transform:translate(-50%,-50%) scale(1.06)}}
+}
+
+/* ---------- App shell ---------- */
+.app{height:100%;max-width:540px;margin:0 auto;display:flex;flex-direction:column;padding:8px 12px 10px}
+.top{display:flex;align-items:center;gap:10px;padding:4px 2px 8px}
+.top .name{font-family:"Shippori Mincho",serif;font-weight:800;font-size:17px;letter-spacing:.02em;flex:1;white-space:nowrap}
+.top .name span{color:var(--pink)}
+.toggles{display:flex;gap:6px}
+.music-wrap{position:relative}
+.music-menu{
+  position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:228px;
+  background:var(--paper);color:var(--ink);border:2.5px solid var(--ink);border-radius:14px;
+  box-shadow:4px 4px 0 var(--ink);padding:6px;display:none;
+}
+.music-menu.open{display:block;animation:pop .3s cubic-bezier(.3,1.5,.5,1) both}
+.music-menu p{margin:4px 8px 6px;font-size:12.5px;font-weight:700;color:#7a6680}
+.music-menu button{
+  display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:none;
+  color:var(--ink);padding:10px;border-radius:10px;font-size:14.5px;font-weight:700;min-height:44px;
+}
+.music-menu button small{display:block;font-size:12px;font-weight:500;color:#7a6680}
+.music-menu button .ico{font-size:20px;width:26px;text-align:center}
+.music-menu button[aria-checked="true"]{background:#ffe3ee}
+.music-menu button[aria-checked="true"]::after{content:"✓";margin-left:auto;color:var(--pink);font-weight:900}
+.toggle{
+  border:1.5px solid var(--chrome-soft);background:transparent;color:var(--chrome-soft);
+  border-radius:999px;padding:7px 11px;font-size:13px;font-weight:700;white-space:nowrap;
+  transition:background .25s,color .25s;
+}
+.toggle[aria-pressed="true"]{background:var(--btn);color:var(--btn-text);border-color:var(--btn)}
+.toggle[aria-pressed="false"] .ic{opacity:.45;text-decoration:line-through}
+.dots{display:flex;gap:5px;justify-content:center;padding:0 0 8px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--chrome-soft);opacity:.35;transition:all .3s}
+.dots i.on{opacity:1;background:var(--pink);width:20px;border-radius:4px}
+
+.stage{position:relative;flex:1;min-height:0}
+.page{
+  position:absolute;inset:0;opacity:0;pointer-events:none;
+  transition:opacity .45s ease, transform .45s ease;
+}
+.page[data-side="past"]{transform:translateX(-28px)}
+.page[data-side="future"]{transform:translateX(28px)}
+.page.active{opacity:1;transform:none;pointer-events:auto}
+
+.nav{display:flex;align-items:center;gap:10px;padding-top:10px}
+.nav button{
+  flex:0 0 auto;min-width:52px;height:48px;border-radius:999px;border:none;
+  background:var(--btn-ghost);color:var(--chrome);font-size:20px;font-weight:900;
+}
+.nav .next{flex:1;background:var(--btn);color:var(--btn-text);font-size:16px}
+.nav button:disabled{opacity:.3}
+
+/* ---------- Comic sheet ---------- */
+.sheet{
+  height:100%;background:var(--paper);color:var(--ink);
+  border:3px solid var(--ink);border-radius:16px;padding:8px;
+  display:grid;gap:8px;grid-template-rows:1fr;
+  box-shadow:6px 6px 0 var(--ink);
+}
+.sheet.two{grid-template-rows:1fr 1.15fr}
+.sheet.cake-sheet{grid-template-rows:1fr auto}
+.sheet.charm-sheet{grid-template-rows:.95fr 1.05fr}
+.panel{position:relative;border:2.5px solid var(--ink);border-radius:9px;overflow:hidden;min-height:0}
+.halftone::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(43,34,51,.09) 1.1px,transparent 1.5px);
+  background-size:9px 9px;
+}
+.ren-slot{position:absolute;bottom:-3px;aspect-ratio:240/300;z-index:2}
+.ren-slot svg{width:100%;height:100%;display:block;overflow:visible}
+
+.bubble{
+  position:absolute;z-index:4;background:#fff;border:2.5px solid var(--ink);
+  border-radius:20px;padding:9px 13px;max-width:58%;
+  font-size:clamp(13px,3.7vw,16px);font-weight:700;line-height:1.35;color:var(--ink);
+}
+.bubble::after{
+  content:"";position:absolute;width:16px;height:16px;background:#fff;
+  border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);
+  transform:rotate(45deg);
+}
+.bubble.tail-br::after{right:22%;bottom:-9.5px}
+.bubble.tail-bl::after{left:22%;bottom:-9.5px}
+.bubble.tail-r::after{right:-9.5px;top:40%;transform:rotate(-45deg)}
+.bubble.whisper{border-style:dashed;font-weight:500}
+.bubble.whisper::after{border-style:dashed}
+.bubble b{color:var(--pink)}
+.narr{
+  position:absolute;z-index:4;background:#fff3c8;border:2px solid var(--ink);
+  padding:6px 10px;font-size:clamp(12px,3.3vw,14px);font-weight:700;line-height:1.3;max-width:62%;
+}
+.sfx{
+  position:absolute;z-index:3;font-family:"Shippori Mincho",serif;font-weight:800;
+  color:var(--pink);-webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill;
+  font-size:clamp(22px,7vw,32px);transform:rotate(-8deg);letter-spacing:.04em;
+}
+.pop{animation:pop .5s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+
+/* ---------- Page 1: cover ---------- */
+.cover{background:linear-gradient(180deg,#ffd6e3 0%,#fbe3d6 45%,#e9dcff 100%)}
+.cover .scene{position:absolute;inset:0;width:100%;height:100%}
+.cover-head{position:absolute;z-index:3;left:16px;right:84px;top:14px}
+.cover-head .jp{
+  font-family:"Shippori Mincho",serif;font-weight:800;font-size:clamp(13px,3.6vw,15px);
+  color:var(--pink);letter-spacing:.3em;
+}
+.cover-head h1{
+  margin:4px 0 0;font-family:"Shippori Mincho",serif;font-weight:800;
+  font-size:clamp(34px,10.5vw,52px);line-height:1.02;letter-spacing:-.01em;color:var(--ink);
+}
+.cover-head h1 .script{
+  display:block;font-family:"Dancing Script",cursive;font-weight:700;color:var(--pink);
+  font-size:1.35em;line-height:.95;margin-top:2px;
+  -webkit-text-stroke:1.2px var(--ink);paint-order:stroke fill;
+}
+.chapter{
+  position:absolute;z-index:3;right:12px;top:12px;width:62px;height:62px;border-radius:50%;
+  background:var(--ink);color:#fff;display:grid;place-items:center;text-align:center;
+  font-family:"Shippori Mincho",serif;font-weight:800;font-size:12px;line-height:1.1;
+  transform:rotate(10deg);
+}
+.chapter b{display:block;font-size:24px;color:var(--sakura)}
+.cover .ren-slot{right:-4%;height:58%}
+.cover-foot{
+  position:absolute;z-index:3;left:0;bottom:0;padding:10px 14px;background:var(--ink);color:#fff;
+  font-size:12.5px;font-weight:700;border-top-right-radius:12px;max-width:60%;line-height:1.35;
+}
+.cover-foot span{color:var(--sakura)}
+
+/* ---------- Page 2 ---------- */
+.shrine{background:linear-gradient(180deg,#cfeeea 0%,#fbe6ee 100%)}
+.shrine .scene{position:absolute;inset:0;width:100%;height:100%}
+.shrine .ren-slot{right:4%;height:66%}
+.speed{background:repeating-conic-gradient(from 0deg at 62% 70%,#fff 0deg 3deg,#ffe4ee 3deg 8deg)}
+.speed .ren-slot{right:-6%;height:96%}
+
+/* ---------- Page 3 ---------- */
+.sparkle{background:radial-gradient(circle at 30% 45%,#fff6d8,#ffe0ea 60%,#f3d7ff)}
+.big18{
+  position:absolute;z-index:2;left:6%;top:24%;
+  font-family:"Shippori Mincho",serif;font-weight:800;font-size:clamp(90px,30vw,140px);line-height:1;
+  color:var(--gold);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;
+  text-shadow:6px 6px 0 var(--sakura);
+}
+.sparkle .ren-slot{right:-4%;height:84%}
+.soft{background:linear-gradient(160deg,#e7f6f4,#fff 60%,#fde7ef)}
+.soft .ren-slot{left:-6%;height:92%}
+
+/* ---------- Page 4: cake ---------- */
+.lantern{background:linear-gradient(180deg,#3a2f63 0%,#6a3f6e 55%,#c9708a 100%)}
+.lantern .scene{position:absolute;inset:0;width:100%;height:100%}
+.lantern .ren-slot{left:-8%;height:56%}
+.cake{position:absolute;right:2%;bottom:3%;width:62%;z-index:3}
+.cake svg{width:100%;height:auto;display:block;overflow:visible}
+.flame{opacity:0;transform:scale(.2);transform-box:fill-box;transform-origin:50% 100%;transition:opacity .3s, transform .35s cubic-bezier(.3,1.6,.5,1)}
+.candle.lit .flame{opacity:1;transform:scale(1)}
+@media (prefers-reduced-motion:no-preference){
+  .candle.lit .flame path{animation:flicker 1.2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}
+  @keyframes flicker{50%{transform:scaleY(1.12) skewX(3deg)}100%{transform:scaleY(.94) skewX(-3deg)}}
+}
+.smoke{opacity:0}
+.candle.out .smoke{animation:smoke 1.8s ease-out forwards}
+@keyframes smoke{0%{opacity:0;transform:translateY(0)}20%{opacity:.8}100%{opacity:0;transform:translateY(-16px)}}
+.wish-overlay{
+  position:absolute;inset:0;z-index:6;display:grid;place-items:center;text-align:center;
+  background:rgba(27,24,64,.72);color:#fff;opacity:0;pointer-events:none;transition:opacity .5s;padding:20px;
+}
+.wish-overlay.show{opacity:1}
+.wish-overlay p{margin:0;font-size:17px;font-weight:700;line-height:1.5}
+.wish-overlay .count{font-family:"Shippori Mincho",serif;font-size:64px;color:var(--sakura);line-height:1.2}
+.controls{display:flex;gap:8px}
+.controls button{
+  flex:1;min-height:48px;border-radius:12px;border:2.5px solid var(--ink);
+  background:var(--sakura);color:var(--ink);font-weight:900;font-size:15px;
+  box-shadow:3px 3px 0 var(--ink);
+}
+.controls button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.controls button:disabled{opacity:.4;box-shadow:none}
+.controls button.alt{background:#fff3c8}
+
+/* ---------- Page 5: hanabi ---------- */
+.night{background:radial-gradient(120% 80% at 50% 0%,#3b3478 0%,#1b1840 55%,#120f2c 100%)}
+.night canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.night .stars{position:absolute;inset:0;width:100%;height:100%}
+.hanabi-text{position:absolute;z-index:3;left:0;right:0;top:9%;text-align:center;pointer-events:none;color:#fff;padding:0 10px}
+.hanabi-text .jp{
+  font-family:"Shippori Mincho",serif;font-weight:800;font-size:clamp(22px,7vw,36px);letter-spacing:.02em;white-space:nowrap;
+  color:#fff;text-shadow:0 0 18px rgba(244,167,193,.8);
+}
+.hanabi-text .ro{font-size:14px;color:#cfc4ff;letter-spacing:.12em;margin-top:2px}
+.hanabi-text .pt{font-family:"Dancing Script",cursive;font-size:clamp(32px,10vw,46px);color:var(--sakura);margin-top:6px;line-height:1}
+.night .ren-slot{left:50%;transform:translateX(-50%);height:46%}
+.tap-hint{position:absolute;z-index:3;right:10px;bottom:10px;color:#cfc4ff;font-size:12.5px;font-weight:700;pointer-events:none}
+
+/* ---------- Page 6: omamori ---------- */
+.temple{background:linear-gradient(180deg,#fde9ef,#f6efe0)}
+.temple .ren-slot{right:-4%;height:96%}
+.charm-panel{background:#fff8f2;display:flex;flex-direction:column;padding:10px 10px 12px;gap:10px}
+.charms{display:flex;justify-content:space-around;gap:6px}
+.charm{border:none;background:none;padding:0;width:28%;max-width:96px;transition:transform .35s cubic-bezier(.3,1.5,.5,1)}
+.charm svg{width:100%;height:auto;display:block}
+.charm.open{transform:translateY(-6px) rotate(-4deg)}
+.charm:nth-child(2).open{transform:translateY(-6px) rotate(3deg)}
+.charm .label{display:block;font-size:12px;font-weight:900;color:var(--ink);margin-top:2px}
+.wish-card{
+  flex:1;min-height:0;border:2px dashed var(--ink);border-radius:10px;padding:10px 14px;
+  display:flex;flex-direction:column;justify-content:center;background:#fff;overflow:auto;
+}
+.wish-card h3{margin:0 0 4px;font-family:"Shippori Mincho",serif;font-size:19px;color:var(--pink)}
+.wish-card p{margin:0;font-size:clamp(14px,3.9vw,16px);line-height:1.5;font-weight:500}
+.wish-card.empty p{color:#8a7a90;text-align:center}
+
+/* ---------- Page 7: letter ---------- */
+.letter{
+  background:
+    repeating-linear-gradient(180deg,transparent 0 29px,rgba(217,70,126,.12) 29px 30px),
+    #fffdf9;
+  padding:18px 18px 16px 22px;overflow:auto;-webkit-overflow-scrolling:touch;
+}
+.letter::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:rgba(217,70,126,.35)}
+.letter h2{margin:0 0 6px;font-family:"Dancing Script",cursive;font-size:38px;color:var(--pink);line-height:1.1}
+.letter p{margin:0 0 12px;font-size:clamp(14.5px,4vw,16.5px);line-height:1.6;max-width:62ch}
+.letter .sign{font-family:"Dancing Script",cursive;font-size:30px;color:var(--ink);margin:4px 0 0;line-height:1.1}
+.letter .stamp{
+  float:right;margin:0 0 6px 10px;width:66px;height:80px;border:2px solid var(--ink);
+  background:#ffe7ef;display:grid;place-items:center;transform:rotate(5deg);
+  outline:3px dotted #fff;outline-offset:-7px;
+}
+.letter .stamp span{font-family:"Shippori Mincho",serif;font-weight:800;font-size:13px;writing-mode:vertical-rl;color:var(--pink)}
+.letter .ps{font-size:14px;color:#6b5872;font-style:italic}
+.letter .mini-ren{float:right;width:96px;aspect-ratio:240/300;margin:4px -6px 0 6px;shape-outside:margin-box}
+.letter .mini-ren svg{width:100%;height:100%}
+.again{
+  display:inline-block;margin-top:6px;min-height:44px;padding:0 18px;border-radius:999px;
+  border:2.5px solid var(--ink);background:var(--sakura);color:var(--ink);font-weight:900;font-size:14.5px;
+  box-shadow:3px 3px 0 var(--ink);
+}
+
+/* Petals */
+.petals{position:fixed;inset:0;z-index:40;pointer-events:none;width:100%;height:100%;transition:opacity .4s}
+.petals.off{opacity:0}
+
+@media (max-height:640px){
+  .bubble{padding:7px 10px;font-size:13px}
+  .narr{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- Envelope -->
+<div class="intro" id="intro">
+  <div>
+    <div class="envelope">
+      <div class="env-body"></div>
+      <div class="env-card">
+        <div class="from">Para</div>
+        <div class="to">Milena Advíncula</div>
+        <div class="from">com carinho, de Andhy Leal</div>
+      </div>
+      <div class="env-flap"></div>
+      <button class="seal" id="seal" aria-label="Abrir o cartão">
+        <svg viewBox="-20 -20 40 40" aria-hidden="true" id="sealFlower"></svg>
+      </button>
+    </div>
+    <div class="intro-hint"><b>お誕生日おめでとう</b>Toque no selo para abrir</div>
+  </div>
+</div>
+
+<canvas class="petals" id="petals" aria-hidden="true"></canvas>
+
+<div class="app">
+  <div class="top">
+    <div class="name">Milena <span>18</span></div>
+    <div class="toggles">
+      <div class="music-wrap">
+        <button class="toggle" id="musicBtn" aria-pressed="true" aria-haspopup="true" aria-expanded="false" aria-label="Escolher a música"><span class="ic">🌸</span> Música</button>
+        <div class="music-menu" id="musicMenu" role="menu">
+          <p>Escolha a música</p>
+          <button role="menuitemradio" data-song="festa" aria-checked="false"><span class="ico">🎉</span><span>Festival<small>animada, clima de matsuri</small></span></button>
+          <button role="menuitemradio" data-song="sakura" aria-checked="true"><span class="ico">🌸</span><span>Sakura Sakura<small>calma, a canção da cerejeira</small></span></button>
+          <button role="menuitemradio" data-song="off" aria-checked="false"><span class="ico">🔇</span><span>Sem música</span></button>
+        </div>
+      </div>
+      <button class="toggle" id="petalBtn" aria-pressed="true" aria-label="Ligar ou desligar as pétalas"><span class="ic">🌸</span> Pétalas</button>
+    </div>
+  </div>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+
+  <main class="stage" id="stage">
+
+    <!-- 1 · Capa -->
+    <section class="page" aria-label="Capa">
+      <div class="sheet">
+        <div class="panel cover">
+          <svg class="scene" viewBox="0 0 400 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+            <circle cx="290" cy="300" r="70" fill="#ffc9a8" opacity=".75"/>
+            <path d="M-10 470 L120 352 Q170 300 200 300 Q230 300 280 352 L410 470 V600 H-10Z" fill="#9b86c7"/>
+            <path d="M163 330 Q185 302 200 300 Q215 302 237 330 L224 338 L212 328 L200 342 L188 328 L176 338Z" fill="#fff"/>
+            <path d="M-10 520 Q90 470 200 505 T410 490 V600 H-10Z" fill="#f2b3c8"/>
+            <path d="M-10 560 Q120 530 240 556 T410 545 V600 H-10Z" fill="#e88aab"/>
+            <g id="coverBranch"></g>
+          </svg>
+          <div class="cover-head">
+            <div class="jp">ミレナの特別な日</div>
+            <h1>O dia especial da <span class="script">Milena</span></h1>
+          </div>
+          <div class="chapter">第<b>18</b>話</div>
+          <div class="ren-slot" data-expr="wink" data-pose="wave"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Encontro -->
+    <section class="page" aria-label="O encontro">
+      <div class="sheet two">
+        <div class="panel shrine">
+          <svg class="scene" viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+            <path d="M0 210 Q200 196 400 210 V260 H0Z" fill="#e7c9b3"/>
+            <g transform="translate(40 40)">
+              <rect x="22" y="42" width="14" height="140" fill="#d8443f" stroke="#2b2233" stroke-width="3"/>
+              <rect x="150" y="42" width="14" height="140" fill="#d8443f" stroke="#2b2233" stroke-width="3"/>
+              <rect x="6" y="56" width="174" height="11" fill="#d8443f" stroke="#2b2233" stroke-width="3"/>
+              <path d="M-12 22 Q93 34 198 22 L192 40 Q93 48 -6 40Z" fill="#2b2233"/>
+              <rect x="0" y="34" width="186" height="10" fill="#d8443f" stroke="#2b2233" stroke-width="3"/>
+              <rect x="84" y="44" width="18" height="16" fill="#2b2233"/>
+            </g>
+            <g id="shrineTree"></g>
+          </svg>
+          <div class="bubble tail-br pop" style="top:8%;left:4%;max-width:56%">Hmm… o templo das cerejeiras é aqui? Hoje eu tenho uma missão importante.</div>
+          <div class="sfx pop" style="left:40%;bottom:8%;animation-delay:.3s">テクテク</div>
+          <div class="ren-slot" data-expr="look" data-pose="none"></div>
+        </div>
+        <div class="panel speed">
+          <div class="ren-slot" data-expr="joy" data-pose="wave"></div>
+          <div class="bubble tail-r pop" style="top:7%;left:4%;max-width:55%;animation-delay:.2s">Ah! Você é a <b>Milena</b>, né?! Prazer, eu sou o <b>Mirai</b> (未来)!</div>
+          <div class="bubble tail-r pop" style="top:50%;left:4%;max-width:50%;animation-delay:.7s">Vim de longe só pra te contar uma coisa…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · 18 anos -->
+    <section class="page" aria-label="Dezoito anos">
+      <div class="sheet two">
+        <div class="panel sparkle halftone">
+          <div class="narr pop" style="top:0;left:0;border-width:0 2px 2px 0">30 de outubro de 2026</div>
+          <div class="big18 pop" style="animation-delay:.15s">18</div>
+          <div class="ren-slot" data-expr="smile" data-pose="none"></div>
+          <div class="bubble tail-r pop" style="bottom:8%;left:4%;max-width:50%;animation-delay:.5s">Hoje você faz <b>18 anos!</b> 🎉</div>
+        </div>
+        <div class="panel soft">
+          <div class="ren-slot" data-expr="shy" data-pose="none"></div>
+          <div class="narr pop" style="top:8px;right:8px;max-width:58%">💡 Desde 2022, a maioridade no Japão também é aos 18.</div>
+          <div class="bubble tail-bl pop" style="top:34%;right:4%;max-width:54%;animation-delay:.4s">Ou seja: adulta aqui <b>e</b> no Japão!</div>
+          <div class="bubble whisper pop" style="bottom:6%;right:4%;max-width:54%;animation-delay:.9s">…mas isso não quer dizer parar de ver anime, tá? É regra.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · Bolo -->
+    <section class="page" aria-label="O bolo">
+      <div class="sheet cake-sheet">
+        <div class="panel lantern" id="cakePanel">
+          <svg class="scene" viewBox="0 0 400 400" preserveAspectRatio="xMidYMin slice" aria-hidden="true" id="lanterns"></svg>
+          <div class="ren-slot" id="cakeRen" data-expr="shy" data-pose="none"></div>
+          <div class="bubble tail-bl pop" id="cakeBubble" style="top:6%;left:4%;max-width:64%">Eu fiz um bolo pra você. Bom… tentei. 😅</div>
+          <div class="sfx" id="blowSfx" style="right:8%;top:24%;opacity:0">フーッ!</div>
+          <div class="cake" id="cake"></div>
+          <div class="wish-overlay" id="wishOverlay"><div><p id="wishText">Feche os olhos<br>e faça um pedido…</p><div class="count" id="wishCount"></div></div></div>
+        </div>
+        <div class="controls">
+          <button id="lightBtn">🕯️ Acender as velas</button>
+          <button id="blowBtn" class="alt" disabled>🌠 Fazer um pedido</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · Hanabi -->
+    <section class="page" aria-label="Fogos">
+      <div class="sheet">
+        <div class="panel night" id="night">
+          <svg class="stars" id="stars" aria-hidden="true"></svg>
+          <canvas id="fw" aria-label="Toque para soltar fogos"></canvas>
+          <div class="hanabi-text">
+            <div class="jp">お誕生日おめでとう！</div>
+            <div class="ro">otanjōbi omedetō</div>
+            <div class="pt">Feliz aniversário, Milena!</div>
+          </div>
+          <div class="ren-slot" data-expr="joy" data-pose="wave" style="pointer-events:none"></div>
+          <div class="tap-hint">Toque no céu ✨</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · Omamori -->
+    <section class="page" aria-label="Amuletos">
+      <div class="sheet charm-sheet">
+        <div class="panel temple halftone">
+          <div class="ren-slot" id="charmRen" data-expr="smile" data-pose="none"></div>
+          <div class="bubble tail-r pop" id="charmBubble" style="top:10%;left:4%;max-width:56%">Trouxe três <b>omamori</b>, amuletos de templo. Toque em cada um!</div>
+        </div>
+        <div class="panel charm-panel">
+          <div class="charms" id="charms"></div>
+          <div class="wish-card empty" id="wishCard"><p>Escolha um amuleto para ler o desejo 🌸</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · Carta -->
+    <section class="page" aria-label="Carta">
+      <div class="sheet">
+        <div class="panel letter">
+          <div class="stamp"><span>桜 十八歳</span></div>
+          <h2>Milena,</h2>
+          <p>Hoje você completa 18 anos, e eu quis te dar um presente com a sua cara: anime, Japão e muita cor.</p>
+          <p>Que você continue sendo exatamente quem você é: curiosa, apaixonada pelas coisas que ama, com um jeito só seu de ver o mundo. O mundo fica mais bonito por isso.</p>
+          <p>Que não faltem animes bons pra maratonar, pessoas que te entendam de verdade e motivos pra acordar animada no dia seguinte.</p>
+          <p>E que um dia você esteja embaixo de uma cerejeira de verdade, em Tóquio ou em Kyoto, lembrando deste aniversário. 🌸</p>
+          <div class="mini-ren" data-expr="joy" data-pose="wave"></div>
+          <p style="margin-bottom:0">Com carinho,</p>
+          <p class="sign">Andhy Leal</p>
+          <button class="again" id="again">Ler o gibi de novo</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="nav">
+    <button class="prev" id="prev" aria-label="Página anterior">‹</button>
+    <button class="next" id="next">Próxima página ›</button>
+  </nav>
+</div>
+
+<script>
+/* ============ Helpers ============ */
+const INK = '#2b2233';
+let uid = 0;
+function sakura(x, y, r, c = '#f6a5c0', stroke = true) {
+  let s = '';
+  for (let i = 0; i < 5; i++) {
+    s += `<ellipse cx="${x}" cy="${y - r * .55}" rx="${r * .42}" ry="${r * .58}" fill="${c}" ${stroke ? `stroke="${INK}" stroke-width="${Math.max(.6, r * .08)}"` : ''} transform="rotate(${i * 72} ${x} ${y})"/>`;
+  }
+  return s + `<circle cx="${x}" cy="${y}" r="${r * .22}" fill="#f7d27a"/>`;
+}
+
+/* ============ Mirai — personagem original ============ */
+function ren(expr = 'smile', pose = 'none') {
+  const u = 'r' + (++uid);
+  const SKIN = '#fbe3d3', SKIN2 = '#efc6b2';
+  const H1 = '#f08ab0', H2 = '#b8406c';
+  const COAT = '#f6ecdc', COAT2 = '#e3d3ba', HOOD = '#2a2b4d', ACC = '#c94468';
+
+  const eyeOpen = (cx, cy, dx = 0, small = false) => `
+    <ellipse cx="${cx}" cy="${cy + 2}" rx="9.5" ry="11" fill="#fff"/>
+    <ellipse cx="${cx + dx}" cy="${cy + 3}" rx="${small ? 5.5 : 7.8}" ry="${small ? 7 : 9.8}" fill="url(#${u}iris)"/>
+    <ellipse cx="${cx + dx}" cy="${cy + 4}" rx="${small ? 2.2 : 3.4}" ry="${small ? 3 : 5.2}" fill="#3a1d10"/>
+    <circle cx="${cx + dx - 3}" cy="${cy - 1}" r="2.7" fill="#fff"/>
+    <circle cx="${cx + dx + 3}" cy="${cy + 8}" r="1.3" fill="#fff"/>
+    <path d="M${cx - 12} ${cy - 3} Q${cx} ${cy - 13} ${cx + 12} ${cy - 4}" stroke="${INK}" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+    <path d="M${cx - 7} ${cy + 14.5} Q${cx} ${cy + 16} ${cx + 7} ${cy + 14.5}" stroke="${INK}" stroke-width="1" fill="none" opacity=".45"/>`;
+  const eyeClosed = (cx, cy) => `<path d="M${cx - 10} ${cy + 5} Q${cx} ${cy - 6} ${cx + 10} ${cy + 5}" stroke="${INK}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+
+  const L = 100, R = 140, EY = 116;
+  let eyes = '', mouth = '', extra = '', blush = .4;
+  const smile = `<path d="M110 145 Q120 152 130 145" stroke="#8a3340" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+  const open = `<path d="M107 142 Q120 162 133 142 Q120 146 107 142Z" fill="#9c3446" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round"/><path d="M113 151 Q120 157 127 151 Q120 148 113 151Z" fill="#ef7b8a"/>`;
+  switch (expr) {
+    case 'joy': eyes = eyeClosed(L, EY) + eyeClosed(R, EY); mouth = open; blush = .55; break;
+    case 'wink': eyes = eyeOpen(L, EY) + eyeClosed(R, EY); mouth = `<path d="M109 144 Q121 153 132 141" stroke="#8a3340" stroke-width="2.4" fill="none" stroke-linecap="round"/>`; break;
+    case 'look': eyes = eyeOpen(L, EY, -2.5) + eyeOpen(R, EY, -2.5); mouth = `<path d="M111 145 Q120 152 129 145" stroke="#8a3340" stroke-width="2.4" fill="none" stroke-linecap="round"/>`; blush = .35; break;
+    case 'shy':
+      eyes = eyeOpen(L, EY, 2.5) + eyeOpen(R, EY, 2.5);
+      mouth = `<path d="M110 144 Q120 154 130 144" stroke="#8a3340" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+      extra = `<path d="M170 82 Q176 92 172 99 Q166 101 165 94 Q166 88 170 82Z" fill="#bfe8f5" stroke="${INK}" stroke-width="1.4"/>`;
+      blush = .7; break;
+    case 'surprised': eyes = eyeOpen(L, EY) + eyeOpen(R, EY); mouth = open; blush = .5; break;
+    default: eyes = eyeOpen(L, EY) + eyeOpen(R, EY); mouth = smile;
+  }
+
+  const wave = pose === 'wave' ? `
+    <path d="M172 300 Q172 252 182 222 Q190 198 204 184 L230 196 Q220 222 216 250 Q213 278 216 300Z" fill="${COAT}" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M190 236 Q196 262 194 296" stroke="${COAT2}" stroke-width="3" fill="none"/>
+    ${sakura(203, 262, 6)}
+    <path d="M203 184 L230 196" stroke="${ACC}" stroke-width="5" stroke-linecap="round"/>
+    <g transform="translate(219 168) rotate(12)" fill="${SKIN}" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round">
+      <rect x="-12.5" y="-30" width="6.5" height="21" rx="3.2"/>
+      <rect x="-5.5" y="-35" width="6.5" height="26" rx="3.2"/>
+      <rect x="1.5" y="-33" width="6.5" height="24" rx="3.2"/>
+      <rect x="8.5" y="-27" width="6" height="18" rx="3"/>
+      <rect x="-14" y="-15" width="29" height="24" rx="10"/>
+      <rect x="-25" y="-12" width="15" height="7.5" rx="3.7" transform="rotate(-38 -12 -8)"/>
+    </g>` : '';
+
+  return `<svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="${u}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb8cf"/><stop offset="1" stop-color="${H2}"/></linearGradient>
+    <linearGradient id="${u}iris" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3f12"/><stop offset=".55" stop-color="#d98a2b"/><stop offset="1" stop-color="#ffd57a"/></linearGradient>
+  </defs>
+  <!-- cabelo de trás -->
+  <path d="M62 112 Q52 50 120 38 Q188 50 178 112 Q182 150 166 172 L150 150 L90 150 L74 172 Q58 150 62 112Z" fill="url(#${u}hair)" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- pescoço -->
+  <path d="M104 150 L104 190 Q120 200 136 190 L136 150Z" fill="${SKIN}" stroke="${INK}" stroke-width="1.6"/>
+  <path d="M104 162 Q120 182 136 162 L136 176 Q120 188 104 176Z" fill="${SKIN2}"/>
+  <!-- moletom -->
+  <path d="M24 302 Q28 222 76 204 L102 190 Q120 202 138 190 L164 204 Q212 222 216 302Z" fill="${HOOD}" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M96 192 Q120 216 144 192 Q140 208 120 214 Q100 208 96 192Z" fill="#1d1e3a" stroke="${INK}" stroke-width="1.5"/>
+  <path d="M113 210 L111 244 M127 210 L129 244" stroke="#f6ecdc" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="111" cy="246" r="2.6" fill="${ACC}"/><circle cx="129" cy="246" r="2.6" fill="${ACC}"/>
+  <!-- haori -->
+  <path d="M24 302 Q28 222 76 204 L98 192 L110 302Z" fill="${COAT}" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M216 302 Q212 222 164 204 L142 192 L130 302Z" fill="${COAT}" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M98 192 L110 302 L99 302 L88 196Z" fill="${ACC}" stroke="${INK}" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M142 192 L130 302 L141 302 L152 196Z" fill="${ACC}" stroke="${INK}" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M58 236 Q66 268 60 300 M182 236 Q174 268 180 300" stroke="${COAT2}" stroke-width="3" fill="none"/>
+  ${sakura(48, 266, 7)}${sakura(70, 292, 5)}${sakura(190, 252, 6)}${sakura(200, 288, 7)}
+  ${wave}
+  <!-- orelhas -->
+  <ellipse cx="73" cy="118" rx="7" ry="12" fill="${SKIN}" stroke="${INK}" stroke-width="1.6"/>
+  <ellipse cx="167" cy="118" rx="7" ry="12" fill="${SKIN}" stroke="${INK}" stroke-width="1.6"/>
+  <!-- rosto -->
+  <path d="M72 102 Q72 58 120 56 Q168 58 168 102 Q168 136 146 156 Q132 168 120 170 Q108 168 94 156 Q72 136 72 102Z" fill="${SKIN}" stroke="${INK}" stroke-width="1.8"/>
+  <path d="M74 96 Q120 80 166 96 L166 108 Q120 92 74 108Z" fill="#7a4a5a" opacity=".08"/>
+  <ellipse cx="93" cy="136" rx="9" ry="4.5" fill="#ff8fa3" opacity="${blush}"/>
+  <ellipse cx="147" cy="136" rx="9" ry="4.5" fill="#ff8fa3" opacity="${blush}"/>
+  <path d="M89 101 Q100 96 111 100" stroke="${H2}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  <path d="M129 100 Q140 96 151 101" stroke="${H2}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  ${eyes}
+  <path d="M121 128 Q122 132 119 133" stroke="#c98f7a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  ${mouth}
+  <!-- franja -->
+  <path d="M68 98 Q58 140 76 164 Q74 132 82 110Z" fill="url(#${u}hair)" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M172 98 Q182 140 164 164 Q166 132 158 110Z" fill="url(#${u}hair)" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M64 112 Q60 58 106 46 Q156 38 178 76 Q184 96 176 112 L168 92 L160 96 L152 82 L142 94 L134 78 L124 94 L116 76 L106 92 L98 78 L88 94 L82 84 L72 106Z" fill="url(#${u}hair)" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M118 44 Q112 20 134 14 Q122 26 127 44Z" fill="${H1}" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M84 70 Q104 56 130 55" stroke="#fff0f5" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/>
+  <path d="M108 60 L104 84 M140 62 L146 80" stroke="${H2}" stroke-width="1.4" fill="none" opacity=".7"/>
+  <!-- presilha de sakura -->
+  <rect x="150" y="80" width="18" height="4" rx="2" fill="#d4a24c" stroke="${INK}" stroke-width="1" transform="rotate(-30 159 82)"/>
+  ${sakura(164, 76, 6.5, '#ffffff')}
+  ${extra}
+</svg>`;
+}
+
+function renderRen(el) { el.innerHTML = ren(el.dataset.expr, el.dataset.pose); }
+document.querySelectorAll('.ren-slot, .mini-ren').forEach(renderRen);
+function setExpr(el, expr) { el.dataset.expr = expr; renderRen(el); }
+
+/* ============ Cenários ============ */
+document.getElementById('sealFlower').innerHTML = sakura(0, 0, 13, '#fff', false);
+
+function branch(g, flowers, d) {
+  let s = `<path d="${d}" stroke="#6b3f3a" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+  flowers.forEach(([x, y, r]) => s += sakura(x, y, r, '#fbc3d5'));
+  g.innerHTML = s;
+}
+branch(document.getElementById('coverBranch'),
+  [[40, 168, 13], [86, 196, 11], [128, 222, 12], [60, 236, 9], [156, 254, 8], [18, 210, 10]],
+  'M-10 150 Q50 170 90 200 Q120 222 160 252 M70 186 Q60 214 58 236');
+branch(document.getElementById('shrineTree'),
+  [[300, 30, 12], [340, 56, 14], [380, 26, 12], [322, 92, 10], [368, 94, 11], [270, 64, 9]],
+  'M410 10 Q360 40 320 60 Q290 74 268 66 M350 48 Q340 80 324 94');
+
+// lanternas da página do bolo
+(function () {
+  let s = '';
+  const L = [[60, 40, 1], [170, 22, .8], [290, 46, 1.1], [360, 18, .7]];
+  s += `<path d="M-10 30 Q100 70 200 34 T410 40" stroke="#2b2233" stroke-width="2" fill="none" opacity=".6"/>`;
+  L.forEach(([x, y, k]) => {
+    s += `<g transform="translate(${x} ${y + 20}) scale(${k})">
+      <circle cx="0" cy="22" r="30" fill="#ffb35c" opacity=".18"/>
+      <rect x="-5" y="-4" width="10" height="6" fill="#2b2233"/>
+      <ellipse cx="0" cy="22" rx="17" ry="22" fill="#e9534f" stroke="#2b2233" stroke-width="2"/>
+      <path d="M-15 14 H15 M-17 22 H17 M-15 30 H15" stroke="#b83a3a" stroke-width="1.4"/>
+      <rect x="-5" y="42" width="10" height="5" fill="#2b2233"/>
+      <path d="M0 47 V58" stroke="#d4a24c" stroke-width="2"/></g>`;
+  });
+  document.getElementById('lanterns').innerHTML = s;
+})();
+
+// estrelas
+(function () {
+  const svg = document.getElementById('stars');
+  svg.setAttribute('viewBox', '0 0 100 100'); svg.setAttribute('preserveAspectRatio', 'none');
+  let s = '';
+  for (let i = 0; i < 60; i++) {
+    const x = Math.random() * 100, y = Math.random() * 70, r = Math.random() * .35 + .12;
+    s += `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${(Math.random() * .6 + .3).toFixed(2)}"/>`;
+  }
+  svg.innerHTML = s;
+})();
+
+/* ============ Configuração ============ */
+const calm = false;
+
+/* ============ Pétalas ============ */
+const pc = document.getElementById('petals'), px = pc.getContext('2d');
+let petals = [], PW = 0, PH = 0, petalsOn = true;
+function sizePetals() {
+  const d = Math.min(devicePixelRatio || 1, 2);
+  PW = innerWidth; PH = innerHeight;
+  pc.width = PW * d; pc.height = PH * d; px.setTransform(d, 0, 0, d, 0, 0);
+}
+function newPetal(top) {
+  return { x: Math.random() * PW, y: top ? -20 : Math.random() * PH, s: 4 + Math.random() * 5,
+    vy: .35 + Math.random() * .55, vx: -.2 + Math.random() * .4, r: Math.random() * 6, vr: (Math.random() - .5) * .03,
+    sw: Math.random() * 6, a: .55 + Math.random() * .35 };
+}
+sizePetals();
+for (let i = 0; i < 20; i++) petals.push(newPetal(false));
+addEventListener('resize', sizePetals);
+function drawPetals() {
+  if (petalsOn && !document.hidden) {
+    px.clearRect(0, 0, PW, PH);
+    petals.forEach((p, i) => {
+      p.sw += .015; p.y += p.vy; p.x += p.vx + Math.sin(p.sw) * .35; p.r += p.vr;
+      if (p.y > PH + 20) petals[i] = newPetal(true);
+      px.save(); px.translate(p.x, p.y); px.rotate(p.r); px.globalAlpha = p.a;
+      px.fillStyle = '#f7b3c8';
+      px.beginPath(); const s = p.s;
+      px.moveTo(0, -s); px.bezierCurveTo(s * .9, -s * .5, s * .7, s * .8, 0, s);
+      px.bezierCurveTo(-s * .7, s * .8, -s * .9, -s * .5, 0, -s);
+      px.fill(); px.restore();
+    });
+  }
+  requestAnimationFrame(drawPetals);
+}
+requestAnimationFrame(drawPetals);
+
+/* ============ Navegação ============ */
+const pages = [...document.querySelectorAll('.page')];
+const dots = document.getElementById('dots');
+pages.forEach(() => dots.appendChild(document.createElement('i')));
+const prevBtn = document.getElementById('prev'), nextBtn = document.getElementById('next');
+let cur = 0;
+const nextLabels = ['Começar a ler ›', 'Próxima página ›', 'Próxima página ›', 'Próxima página ›', 'Próxima página ›', 'Ler a carta ›', 'Fim 🌸'];
+
+function go(i) {
+  if (i < 0 || i >= pages.length) return;
+  cur = i;
+  pages.forEach((p, k) => {
+    p.classList.toggle('active', k === i);
+    p.dataset.side = k < i ? 'past' : k > i ? 'future' : '';
+    p.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+  });
+  [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
+  prevBtn.disabled = i === 0;
+  nextBtn.disabled = i === pages.length - 1;
+  nextBtn.textContent = nextLabels[i];
+  // re-anima os balões
+  pages[i].querySelectorAll('.pop').forEach(b => { b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); });
+  if (i === 4) fw.start(); else fw.stop();
+}
+prevBtn.onclick = () => go(cur - 1);
+nextBtn.onclick = () => go(cur + 1);
+addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(cur + 1); if (e.key === 'ArrowLeft') go(cur - 1); });
+
+let sx = 0, sy = 0;
+const stage = document.getElementById('stage');
+stage.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+stage.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(cur + (dx < 0 ? 1 : -1));
+}, { passive: true });
+
+document.getElementById('again').onclick = () => go(0);
+
+/* ============ Envelope ============ */
+document.getElementById('seal').onclick = () => {
+  music.start();
+  document.getElementById('intro').classList.add('open');
+  setTimeout(() => go(0), 600);
+};
+
+/* ============ Bolo ============ */
+(function () {
+  const colors = ['#f4a7c1', '#9ed9d4', '#ffd27a'];
+  const candle = (x, y, i) => `
+    <g class="candle" data-i="${i}">
+      <rect x="${x - 2.6}" y="${y - 22}" width="5.2" height="22" rx="1.6" fill="${colors[i % 3]}" stroke="${INK}" stroke-width=".9"/>
+      <path d="M${x - 2.6} ${y - 15} L${x + 2.6} ${y - 18} M${x - 2.6} ${y - 7} L${x + 2.6} ${y - 10}" stroke="#fff" stroke-width="1.2" opacity=".8"/>
+      <line x1="${x}" y1="${y - 22}" x2="${x}" y2="${y - 25}" stroke="${INK}" stroke-width="1.1"/>
+      <g class="flame">
+        <circle cx="${x}" cy="${y - 31}" r="9" fill="url(#glow)"/>
+        <path d="M${x} ${y - 39} Q${x + 4.6} ${y - 31} ${x} ${y - 25} Q${x - 4.6} ${y - 31} ${x} ${y - 39}Z" fill="#ffae35"/>
+        <path d="M${x} ${y - 34} Q${x + 2} ${y - 29} ${x} ${y - 26.5} Q${x - 2} ${y - 29} ${x} ${y - 34}Z" fill="#fff4c2"/>
+      </g>
+      <path class="smoke" d="M${x} ${y - 27} q-3 -5 0 -10 q3 -5 0 -10" stroke="#e8dff0" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    </g>`;
+  let back = '', front = '';
+  for (let i = 0; i < 9; i++) back += candle(40 + i * 17.5, 90, i);
+  for (let i = 0; i < 9; i++) front += candle(48 + i * 15.5, 107, i + 9);
+
+  // glacê escorrendo
+  let drip = 'M18 96';
+  for (let x = 18, k = 0; x <= 202; x += 11.5, k++) {
+    const ya = 96 + 24 * Math.sqrt(Math.max(0, 1 - ((x - 110) / 92) ** 2));
+    drip += ` L${x.toFixed(1)} ${(ya + (k % 2 ? 14 : 6) + (k % 3 === 0 ? 5 : 0)).toFixed(1)}`;
+  }
+  drip += ' L202 96 A92 24 0 0 1 18 96Z';
+
+  document.getElementById('cake').innerHTML = `
+  <svg viewBox="0 40 220 165" aria-label="Bolo com 18 velas" role="img">
+    <defs>
+      <radialGradient id="glow"><stop offset="0" stop-color="#ffd27a" stop-opacity=".8"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+      <linearGradient id="cakeG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f9c7d6"/><stop offset="1" stop-color="#ee9db8"/></linearGradient>
+    </defs>
+    <ellipse cx="110" cy="174" rx="108" ry="22" fill="#efe8f6" stroke="${INK}" stroke-width="2.2"/>
+    <path d="M18 96 L18 166 A92 24 0 0 0 202 166 L202 96Z" fill="url(#cakeG)" stroke="${INK}" stroke-width="2.2"/>
+    <path d="${drip}" fill="#fffaf3" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round"/>
+    <ellipse cx="110" cy="96" rx="92" ry="24" fill="#fffaf3" stroke="${INK}" stroke-width="2.2"/>
+    <text x="110" y="158" text-anchor="middle" font-family="Dancing Script, cursive" font-weight="700" font-size="25" fill="#c2305f">Milena ✿ 18</text>
+    ${back}${front}
+  </svg>`;
+
+  const candles = [...document.querySelectorAll('#cake .candle')];
+  const lightBtn = document.getElementById('lightBtn'), blowBtn = document.getElementById('blowBtn');
+  const bubble = document.getElementById('cakeBubble'), renEl = document.getElementById('cakeRen');
+  const ov = document.getElementById('wishOverlay'), wc = document.getElementById('wishCount'), wt = document.getElementById('wishText');
+  const sfx = document.getElementById('blowSfx');
+  const say = t => { bubble.innerHTML = t; bubble.classList.remove('pop'); void bubble.offsetWidth; bubble.classList.add('pop'); };
+
+  lightBtn.onclick = () => {
+    lightBtn.disabled = true;
+    candles.forEach(c => c.classList.remove('out'));
+    const order = [...candles].sort((a, b) => a.getBBox().x - b.getBBox().x);
+    order.forEach((c, k) => setTimeout(() => c.classList.add('lit'), k * (calm ? 40 : 90)));
+    setTimeout(() => {
+      setExpr(renEl, 'smile');
+      say('Dezoito velinhas, todas acesas! Agora faça um pedido. ✨');
+      blowBtn.disabled = false;
+    }, order.length * (calm ? 40 : 90) + 300);
+  };
+
+  blowBtn.onclick = () => {
+    blowBtn.disabled = true;
+    wt.innerHTML = 'Feche os olhos<br>e faça um pedido…'; wc.textContent = '';
+    ov.classList.add('show');
+    let n = 3;
+    const tick = () => {
+      if (n > 0) { wc.textContent = n--; setTimeout(tick, 1000); return; }
+      ov.classList.remove('show');
+      sfx.style.transition = 'opacity .3s'; sfx.style.opacity = 1;
+      candles.forEach((c, k) => setTimeout(() => { c.classList.remove('lit'); c.classList.add('out'); }, k * 35));
+      setTimeout(() => {
+        setExpr(renEl, 'joy');
+        say('Pedido feito! Agora ele é segredo seu. 🤫🎂');
+        burstPetals();
+      }, 700);
+      setTimeout(() => { sfx.style.opacity = 0; lightBtn.disabled = false; lightBtn.textContent = '🕯️ Acender de novo'; }, 2200);
+    };
+    setTimeout(tick, 900);
+  };
+})();
+
+function burstPetals() {
+  if (!petalsOn) return;
+  for (let i = 0; i < 26; i++) {
+    const p = newPetal(true); p.y = -10 - Math.random() * 80; p.vy = .9 + Math.random() * .9; petals.push(p);
+  }
+  setTimeout(() => { petals = petals.slice(0, 20); }, 9000);
+}
+
+/* ============ Fogos (hanabi) ============ */
+const fw = (function () {
+  const cv = document.getElementById('fw'), ctx = cv.getContext('2d');
+  const pal = ['#f4a7c1', '#ffd27a', '#9ee6e0', '#c7b5ff', '#ffffff', '#ff9eb5'];
+  let W = 0, H = 0, parts = [], rockets = [], running = false, auto = 0, last = 0;
+  function size() {
+    const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+  }
+  function launch(x, y) {
+    rockets.push({ x, y: H, ty: y ?? H * (.18 + Math.random() * .3), c: pal[Math.random() * pal.length | 0] });
+  }
+  function burst(x, y, c) {
+    const n = calm ? 26 : 54, c2 = pal[Math.random() * pal.length | 0];
+    for (let i = 0; i < n; i++) {
+      const a = i / n * Math.PI * 2, s = (calm ? 1.2 : 1.6) + Math.random() * 1.8;
+      parts.push({ x, y, px: x, py: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 1, c: i % 3 ? c : c2 });
+    }
+  }
+  function frame(t) {
+    if (!running) return;
+    ctx.clearRect(0, 0, W, H);
+    const every = calm ? 3200 : 1700;
+    if (t - last > every) { last = t; launch(W * (.15 + Math.random() * .7)); }
+    rockets = rockets.filter(r => {
+      r.y -= calm ? 4 : 6;
+      ctx.fillStyle = r.c; ctx.globalAlpha = .9;
+      ctx.beginPath(); ctx.arc(r.x, r.y, 2, 0, 7); ctx.fill();
+      ctx.globalAlpha = .35; ctx.fillRect(r.x - 1, r.y, 2, 14);
+      if (r.y <= r.ty) { burst(r.x, r.y, r.c); return false; }
+      return true;
+    });
+    parts = parts.filter(p => {
+      p.px = p.x; p.py = p.y;
+      p.vx *= .982; p.vy = p.vy * .982 + .03; p.x += p.vx; p.y += p.vy; p.life -= calm ? .009 : .012;
+      ctx.globalAlpha = Math.max(0, p.life); ctx.strokeStyle = p.c; ctx.lineWidth = 2; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(p.x, p.y); ctx.stroke();
+      return p.life > 0;
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+  cv.addEventListener('pointerdown', e => {
+    const r = cv.getBoundingClientRect();
+    launch(e.clientX - r.left, e.clientY - r.top);
+  });
+  addEventListener('resize', () => running && size());
+  return {
+    start() { if (running) return; running = true; size(); parts = []; rockets = []; setTimeout(() => launch(W * .3), 300); setTimeout(() => launch(W * .7), 900); requestAnimationFrame(frame); },
+    stop() { running = false; }
+  };
+})();
+
+/* ============ Omamori ============ */
+(function () {
+  const data = [
+    { k: '幸', name: 'Felicidade', c: '#e9638f', t: 'Que a felicidade te encontre nas coisas grandes e nas pequenas: num episódio novo, num chá quentinho, num dia tranquilo do seu jeito.' },
+    { k: '夢', name: 'Sonhos', c: '#2f7f86', t: 'Que você realize seus sonhos, um por um. Inclusive pisar no Japão e ver as cerejeiras de pertinho.' },
+    { k: '縁', name: 'Laços', c: '#c99236', t: 'Que você esteja sempre cercada de pessoas que te entendem, te respeitam e gostam de você exatamente como você é.' }
+  ];
+  const wrap = document.getElementById('charms'), card = document.getElementById('wishCard');
+  const renEl = document.getElementById('charmRen'), bub = document.getElementById('charmBubble');
+  const opened = new Set();
+  data.forEach((d, i) => {
+    const b = document.createElement('button');
+    b.className = 'charm';
+    b.setAttribute('aria-label', 'Amuleto da ' + d.name);
+    b.innerHTML = `<svg viewBox="0 0 80 120" aria-hidden="true">
+      <path d="M40 4 Q30 4 30 14 Q30 22 40 22 Q50 22 50 14 Q50 4 40 4Z" fill="none" stroke="${INK}" stroke-width="2.5"/>
+      <path d="M34 20 L28 34 M46 20 L52 34" stroke="${d.c}" stroke-width="3" stroke-linecap="round"/>
+      <path d="M12 38 Q12 28 24 28 L56 28 Q68 28 68 38 L68 108 Q68 116 60 116 L20 116 Q12 116 12 108Z" fill="${d.c}" stroke="${INK}" stroke-width="2.5"/>
+      <path d="M12 46 H68" stroke="#fff" stroke-width="2" opacity=".55"/>
+      <path d="M12 100 H68" stroke="#fff" stroke-width="2" opacity=".55"/>
+      <rect x="22" y="52" width="36" height="44" rx="3" fill="#fffaf3" stroke="${INK}" stroke-width="1.6"/>
+      <text x="40" y="84" text-anchor="middle" font-family="Shippori Mincho, serif" font-weight="800" font-size="28" fill="${d.c}">${d.k}</text>
+    </svg><span class="label">${d.name}</span>`;
+    b.onclick = () => {
+      wrap.querySelectorAll('.charm').forEach(c => c.classList.remove('open'));
+      b.classList.add('open');
+      card.classList.remove('empty');
+      card.innerHTML = `<h3>${d.k} · ${d.name}</h3><p>${d.t}</p>`;
+      card.classList.remove('pop'); void card.offsetWidth; card.classList.add('pop');
+      opened.add(i);
+      if (opened.size === 3) {
+        setExpr(renEl, 'joy');
+        bub.innerHTML = 'Agora os três são seus. Guarde bem! 🌸';
+        bub.classList.remove('pop'); void bub.offsetWidth; bub.classList.add('pop');
+      }
+    };
+    wrap.appendChild(b);
+  });
+})();
+
+/* ============ Música: melodia original e animada, no clima de festival japonês ============ */
+const music = (function () {
+  let ctx = null, master = null, wet = null, noise = null, timer = null, on = true, started = false;
+  let nextTime = 0, step = 0;
+  const E8 = 60 / 132 / 2; // colcheia a 132 bpm
+  const N = { A4: 440, C5: 523.25, D5: 587.33, E5: 659.25, G5: 783.99, A5: 880, C6: 1046.5, D6: 1174.66, E6: 1318.5 };
+  const BASS = { C: 130.81, F: 87.31, G: 98, A: 110 };
+  const CH = { C: [261.63, 329.63, 392], G: [196, 246.94, 293.66], F: [174.61, 220, 261.63], A: [220, 261.63, 329.63] };
+  // melodia: [nota, duração em colcheias] — 16 compassos
+  const mel = [
+    ['E5',1],['G5',1],['A5',2],['G5',1],['E5',1],['D5',2],
+    ['C5',2],['D5',1],['E5',1],['G5',4],
+    ['A5',1],['G5',1],['E5',1],['G5',1],['A5',2],['C6',2],
+    ['A5',2],['G5',2],['E5',4],
+    ['E5',1],['G5',1],['A5',2],['G5',1],['E5',1],['D5',2],
+    ['C5',2],['D5',1],['E5',1],['A4',4],
+    ['C5',1],['D5',1],['E5',1],['G5',1],['E5',2],['D5',2],
+    ['C5',6],[null,2],
+    ['A5',2],['A5',1],['G5',1],['A5',2],['C6',2],
+    ['D6',2],['C6',1],['A5',1],['G5',4],
+    ['E5',2],['G5',1],['A5',1],['G5',2],['E5',2],
+    ['D5',2],['E5',1],['D5',1],['C5',4],
+    ['A5',2],['A5',1],['G5',1],['A5',2],['C6',2],
+    ['D6',2],['E6',1],['D6',1],['C6',4],
+    ['A5',1],['C6',1],['A5',1],['G5',1],['E5',2],['D5',2],
+    ['C5',4],[null,4]
+  ];
+  const chords = ['C','G','F','C','C','A','G','C','F','G','C','G','F','G','A','C'];
+  const TOTAL = 16 * 8;
+  const steps = Array.from({ length: TOTAL }, () => []);
+  let t = 0;
+  mel.forEach(([n, d]) => { if (n) steps[t].push({ k: 'lead', f: N[n], d }); t += d; });
+  chords.forEach((c, bar) => {
+    const o = bar * 8;
+    [0, 3, 4, 6].forEach(i => steps[o + i].push({ k: 'bass', f: BASS[c] * (i === 6 ? 2 : 1) }));
+    [2, 6].forEach(i => steps[o + i].push({ k: 'chord', fs: CH[c] }, { k: 'clap' }));
+    [0, 4].forEach(i => steps[o + i].push({ k: 'kick' }));
+    if (bar % 2) steps[o + 7].push({ k: 'kick', soft: true });
+    [1, 3, 5, 7].forEach(i => steps[o + i].push({ k: 'shaker' }));
+  });
+
+  // "Sakura Sakura" — canção folclórica japonesa tradicional (domínio público)
+  const SK = { B3: 246.94, C4: 261.63, E4: 329.63, F4: 349.23, A4: 440, B4: 493.88, C5: 523.25 };
+  const S1 = [['A4', 2], ['A4', 2], ['B4', 4], ['A4', 2], ['A4', 2], ['B4', 4]];
+  const S2 = [['A4', 2], ['B4', 2], ['C5', 2], ['B4', 2], ['A4', 2], ['B4', 1], ['A4', 1], ['F4', 4]];
+  const S3 = [['E4', 2], ['C4', 2], ['E4', 2], ['F4', 2], ['E4', 2], ['E4', 1], ['C4', 1], ['B3', 4]];
+  const S7 = [['E4', 2], ['F4', 2], ['B4', 1], ['A4', 1], ['F4', 2], ['E4', 8]];
+  const sLines = [[S1, 110, 82.41], [S2, 110, 87.31], [S3, 110, 82.41], [S2, 110, 87.31], [S3, 110, 82.41], [S1, 110, 82.41], [S7, 82.41, 82.41]];
+  const SKT = sLines.length * 16 + 8;
+  const skSteps = Array.from({ length: SKT }, () => []);
+  sLines.forEach(([notes, b1, b2], li) => {
+    const o = li * 16;
+    skSteps[o].push({ k: 'kbass', f: b1 }); skSteps[o + 8].push({ k: 'kbass', f: b2 });
+    let x = o; notes.forEach(([n, d]) => { skSteps[x].push({ k: 'koto', f: SK[n] }); x += d; });
+  });
+  const SONGS = {
+    festa: { steps, total: TOTAL, e8: E8, vol: .55 },
+    sakura: { steps: skSteps, total: SKT, e8: 60 / 70 / 2, vol: .62 }
+  };
+  let song = 'sakura';
+  function koto(t, f, isBass) {
+    const g = ctx.createGain(), lp = ctx.createBiquadFilter();
+    lp.type = 'lowpass'; lp.Q.value = 2;
+    lp.frequency.setValueAtTime(isBass ? 900 : 4200, t);
+    lp.frequency.exponentialRampToValueAtTime(isBass ? 220 : 700, t + (isBass ? 1.5 : .9));
+    const v = isBass ? .26 : .32, dur = isBass ? 3 : 2.4;
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(v, t + .006);
+    g.gain.exponentialRampToValueAtTime(v * .35, t + .25); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    const parts = isBass ? [['triangle', 1, 1], ['sine', 2, .3]] : [['sawtooth', 1, .5], ['triangle', 1, .8], ['sine', 2, .25], ['sine', 3.01, .08]];
+    parts.forEach(([type, mul, lvl]) => {
+      const o = ctx.createOscillator(), og = ctx.createGain();
+      o.type = type; og.gain.value = lvl;
+      if (!isBass && mul === 1) { o.frequency.setValueAtTime(f * 1.012, t); o.frequency.exponentialRampToValueAtTime(f, t + .12); }
+      else o.frequency.value = f * mul;
+      o.connect(og).connect(lp); o.start(t); o.stop(t + dur + .1);
+    });
+    lp.connect(g); g.connect(master); g.connect(wet);
+  }
+
+  function env(g, t, v, a, dur) {
+    g.gain.setValueAtTime(.0001, t);
+    g.gain.exponentialRampToValueAtTime(v, t + a);
+    g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+  }
+  function osc(type, f, t, dur, dest, lvl = 1) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.value = f; g.gain.value = lvl;
+    o.connect(g).connect(dest); o.start(t); o.stop(t + dur + .05); return o;
+  }
+  function lead(t, f, d) {
+    const g = ctx.createGain(), lp = ctx.createBiquadFilter();
+    lp.type = 'lowpass'; lp.Q.value = 3;
+    lp.frequency.setValueAtTime(5000, t); lp.frequency.exponentialRampToValueAtTime(1100, t + .35);
+    const dur = Math.min(.25 + d * E8 * 1.1, 1.3);
+    env(g, t, .2, .005, dur);
+    const o = osc('square', f, t, dur, lp, .35);
+    o.frequency.setValueAtTime(f * 1.01, t); o.frequency.exponentialRampToValueAtTime(f, t + .06);
+    osc('triangle', f, t, dur, lp, .9);
+    osc('sine', f / 2, t, dur, lp, .3);
+    lp.connect(g); g.connect(master); g.connect(wet);
+  }
+  function bass(t, f) {
+    const g = ctx.createGain(); env(g, t, .32, .005, .32);
+    osc('triangle', f, t, .32, g); osc('sine', f, t, .32, g, .6);
+    g.connect(master);
+  }
+  function chord(t, fs) {
+    const g = ctx.createGain(); env(g, t, .07, .004, .22);
+    fs.forEach(f => osc('triangle', f * 2, t, .22, g));
+    g.connect(master); g.connect(wet);
+  }
+  function kick(t, soft) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(48, t + .14);
+    env(g, t, soft ? .3 : .6, .003, .32);
+    o.connect(g).connect(master); o.start(t); o.stop(t + .35);
+  }
+  function hit(t, type, freq, v, dur) {
+    const src = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    src.buffer = noise; f.type = type; f.frequency.value = freq;
+    env(g, t, v, .002, dur);
+    src.connect(f).connect(g).connect(master); src.start(t); src.stop(t + dur + .02);
+  }
+  function schedule() {
+    const S = SONGS[song];
+    while (nextTime < ctx.currentTime + .3) {
+      S.steps[step].forEach(e => {
+        if (e.k === 'koto') koto(nextTime, e.f, false);
+        else if (e.k === 'kbass') koto(nextTime, e.f, true);
+        if (e.k === 'lead') lead(nextTime, e.f, e.d);
+        else if (e.k === 'bass') bass(nextTime, e.f);
+        else if (e.k === 'chord') chord(nextTime, e.fs);
+        else if (e.k === 'kick') kick(nextTime, e.soft);
+        else if (e.k === 'clap') hit(nextTime, 'bandpass', 1600, .14, .12);
+        else if (e.k === 'shaker') hit(nextTime, 'highpass', 7000, .05, .05);
+      });
+      step = (step + 1) % S.total;
+      nextTime += S.e8;
+    }
+  }
+  function init() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    ctx = new AC();
+    master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
+    noise = ctx.createBuffer(1, ctx.sampleRate * .5, ctx.sampleRate);
+    const nd = noise.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+    const len = ctx.sampleRate * 1.6, rb = ctx.createBuffer(2, len, ctx.sampleRate);
+    for (let c = 0; c < 2; c++) { const d = rb.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3); }
+    const cv = ctx.createConvolver(); cv.buffer = rb;
+    wet = ctx.createGain(); wet.gain.value = .3; wet.connect(cv).connect(master);
+    return true;
+  }
+  function fadeTo(v, sec) {
+    const t = ctx.currentTime;
+    master.gain.cancelScheduledValues(t);
+    master.gain.setValueAtTime(master.gain.value, t);
+    master.gain.linearRampToValueAtTime(v, t + sec);
+  }
+  function play() {
+    if (!ctx && !init()) return;
+    ctx.resume();
+    if (!started) { started = true; nextTime = ctx.currentTime + .3; step = 0; }
+    if (nextTime < ctx.currentTime) nextTime = ctx.currentTime + .1;
+    clearInterval(timer); timer = setInterval(schedule, 80); schedule();
+    fadeTo(SONGS[song].vol, .8);
+  }
+  function pause() {
+    if (!ctx) return;
+    fadeTo(0, .4); clearInterval(timer);
+    setTimeout(() => { if (!on || document.hidden) ctx.suspend(); }, 500);
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!started) return;
+    if (document.hidden) pause(); else if (on) play();
+  });
+  return {
+    start() { if (on) play(); },
+    select(id) {
+      if (id === 'off') { on = false; pause(); return; }
+      const changed = id !== song; song = id; on = true;
+      if (!started || !ctx) { play(); return; }
+      if (changed) {
+        fadeTo(0, .15); clearInterval(timer);
+        setTimeout(() => { step = 0; nextTime = ctx.currentTime + .08; play(); }, 200);
+      } else play();
+    }
+  };
+})();
+
+const musicBtn = document.getElementById('musicBtn'), petalBtn = document.getElementById('petalBtn');
+const musicMenu = document.getElementById('musicMenu');
+const songIcon = { festa: '🎉', sakura: '🌸', off: '🔇' };
+function setMenu(open) { musicMenu.classList.toggle('open', open); musicBtn.setAttribute('aria-expanded', String(open)); }
+musicBtn.onclick = e => { e.stopPropagation(); setMenu(!musicMenu.classList.contains('open')); };
+musicMenu.querySelectorAll('button').forEach(b => b.onclick = e => {
+  e.stopPropagation();
+  const id = b.dataset.song;
+  music.select(id);
+  musicMenu.querySelectorAll('button').forEach(x => x.setAttribute('aria-checked', String(x === b)));
+  musicBtn.setAttribute('aria-pressed', String(id !== 'off'));
+  musicBtn.querySelector('.ic').textContent = songIcon[id];
+  setTimeout(() => setMenu(false), 250);
+});
+document.addEventListener('click', () => setMenu(false));
+petalBtn.onclick = () => {
+  petalsOn = !petalsOn;
+  petalBtn.setAttribute('aria-pressed', String(petalsOn));
+  pc.classList.toggle('off', !petalsOn);
+  if (!petalsOn) setTimeout(() => !petalsOn && px.clearRect(0, 0, PW, PH), 450);
+};
+
+go(0);
+</script>
+</body>
+</html>
